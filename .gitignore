@@ -1,0 +1,19 @@
+# Virtual environment
+mlcrypto/
+venv/
+
+# MLflow data
+mlflow/
+mlruns/
+
+# Data CSV
+data/*.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment variables
+.env
