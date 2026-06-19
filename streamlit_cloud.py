@@ -60,6 +60,7 @@ def get_latest_features(symbol: str):
     df["bb_width"] = df["bb_upper"] - df["bb_lower"]
 
     df.dropna(inplace=True)
+    df.reset_index(drop=True, inplace=True)
     return df
 
 # ── UI ────────────────────────────────────────────────────────────────────────
