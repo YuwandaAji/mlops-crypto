@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 import pandas as pd
@@ -24,11 +25,12 @@ HORIZONS = ["1h", "6h", "24h"]
 @st.cache_resource
 def load_models():
     models = {}
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     for symbol in ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT"]:
         models[symbol] = {}
         for horizon in HORIZONS:
-            name = f"crypto-predictor-{symbol}-{horizon}"
-            models[symbol][horizon] = mlflow.sklearn.load_model(f"models:/{name}/1")
+            path = os.path.join(base_dir, "models", f"{symbol}_{horizon}")
+            models[symbol][horizon] = mlflow.sklearn.load_model(path)
     return models
 
 def get_latest_features(symbol: str):
