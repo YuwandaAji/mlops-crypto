@@ -35,7 +35,7 @@ def load_models():
 
 def get_latest_features(symbol: str):
     url    = "https://api.binance.com/api/v3/klines"
-    params = {"symbol": symbol, "interval": "1h", "limit": 120}
+    params = {"symbol": symbol, "interval": "1h", "limit": 200}
     raw    = requests.get(url, params=params).json()
 
     df = pd.DataFrame(raw, columns=[
