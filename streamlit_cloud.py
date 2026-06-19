@@ -76,6 +76,11 @@ if st.sidebar.button("Prediksi", use_container_width=True):
         try:
             MODELS = load_models()
             df     = get_latest_features(symbol)
+
+            if df.empty:
+                st.error("Gagal mengambil data dari Binance. Coba lagi beberapa saat.")
+                st.stop()
+
             latest = df.iloc[-1]
 
             features = {
